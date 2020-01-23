@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -24,6 +25,7 @@ public class Robot extends TimedRobot {
   private final DifferentialDrive m_robotDrive
       = new DifferentialDrive(new PWMVictorSPX(0), new PWMVictorSPX(1));
   private final Joystick m_stick = new Joystick(0);
+  private final XboxController xbox = new XboxController(0);
   private final Timer m_timer = new Timer();
 
   /**
@@ -68,7 +70,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    m_robotDrive.arcadeDrive(m_stick.getY(), m_stick.getX());
+    m_robotDrive.arcadeDrive(m_stick.getY(), xbox.getX());
   }
 
   /**
